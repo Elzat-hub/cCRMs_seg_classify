@@ -1,0 +1,19 @@
+MODEL:
+#  TYPE: ResNet101
+#  TYPE: ResNet18
+  # TYPE: ResNet10
+  TYPE: VNET
+  NUM_CLASSES: 2
+
+DATA:
+  DATASET: 'ADC'
+  DATA_PATH: '../data'
+  BATCH_SIZE: 1
+  NUM_WORKERS: 4
+  IMG_SIZE: [32, 256, 256]  #对应
+TEST:
+  SHUFFLE: False
+#  MODEL_PATH: '/home7/yilizhati/projects/301kidney_classification/train/saved_models/ResNet18_checkpoints/ADC_seg_classify_ADC_03_01_14_04/ADC_seg_classify_best.pth.tar' #
+#  MODEL_PATH: '/home7/yilizhati/projects/301kidney_classification/train/saved_models/ResNet18_checkpoints/ADC_seg_classify_ADC_03_01_14_04/ADC_seg_classify_last.pth.tar' #0.66
+  MODEL_PATH: '/home7/yilizhati/projects/301kidney_seg_classify/train/saved_models/VNET_checkpoints/ADC_seg_classify_ADC_08_05_02_44/ADC_segment_best.pth.tar'
+TAG: ADC_inference
