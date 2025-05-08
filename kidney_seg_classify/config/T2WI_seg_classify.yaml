@@ -1,0 +1,37 @@
+MODEL:
+#  TYPE: ResNet101
+#  TYPE: ResNet50
+#  TYPE: ResNet18
+  TYPE: VNET
+#  DROP_PATH_RATE: 0.1
+  NUM_CLASSES: 2
+#  SWIN:
+#    EMBED_DIM: 48
+#    DEPTHS: [ 2, 2, 2, 2 ]
+#    NUM_HEADS: [ 3, 6, 12, 24 ]
+#    WINDOW_SIZE: (7, 7, 7)
+
+DATA:
+  DATASET: 'T2WI'   
+#  DATA_PATH: '../data'   #暂时不用
+  IMG_SIZE: [48, 256, 256]   #根据不同的序列更改
+  BATCH_SIZE: 2
+  NUM_WORKERS: 4   #读取数据的线程数
+TRAIN:
+  EPOCHS: 200  #总的学习+warmup  
+  OPTIMIZER:
+    NAME: 'adamw'
+  WARMUP_EPOCHS: 50   #预热， warmup技巧学习
+  BASE_LR: 1e-4
+  WARMUP_LR: 5e-7
+  MIN_LR: 1e-6
+  WEIGHT_DECAY: 1e-5
+  CLIP_GRAD: 3.0
+  LAYER_DECAY: 0.8
+  DROPOUT_RATE: 0.5
+  LR_SCHEDULER:
+    NAME: 'cosine'
+    GAMMA: 0.1
+PRINT_FREQ: 1   #终端的epoch 迭代次数，自己设置
+SAVE_FREQ: 50    #epoch 保存的频率
+TAG: T2WI_seg_classify

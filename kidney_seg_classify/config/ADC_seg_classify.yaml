@@ -1,0 +1,44 @@
+MODEL:
+#  TYPE: ResNet101
+#  TYPE: ResNet50
+#  TYPE: ResNet18
+#  TYPE: ResNet10
+  TYPE: VNET
+#  DROP_PATH_RATE: 0.1
+  NUM_CLASSES: 2
+#  SWIN:
+#    EMBED_DIM: 48
+#    DEPTHS: [ 2, 2, 2, 2 ]
+#    NUM_HEADS: [ 3, 6, 12, 24 ]
+#    WINDOW_SIZE: (7, 7, 7)
+
+DATA:
+  DATASET: 'ADC'
+#  DATA_PATH: '../data'
+  IMG_SIZE: [32, 256, 256]
+  BATCH_SIZE: 2
+  NUM_WORKERS: 4
+TRAIN:
+  EPOCHS: 150
+  OPTIMIZER:
+    NAME: 'adamw'
+  WARMUP_EPOCHS: 50
+  BASE_LR: 1e-4
+  WARMUP_LR: 5e-7
+  MIN_LR: 1e-6
+  WEIGHT_DECAY: 1e-5
+  CLIP_GRAD: 3.0
+  LAYER_DECAY: 0.8
+  DROPOUT_RATE: 0.4
+#  LOSS:
+#    OUT_DIM: 65536
+#    N_CROPS: 0
+#    WARM_TEACHER_TEMP: 0.04
+#    TEACHER_TEMP: 0.04
+  LR_SCHEDULER:
+    NAME: 'cosine'
+    GAMMA: 0.1
+IN_CHANNELS: 1
+PRINT_FREQ: 1
+SAVE_FREQ: 50
+TAG: ADC_seg_classify
