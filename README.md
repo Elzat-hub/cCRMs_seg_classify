@@ -1,5 +1,5 @@
 # cCRMs_seg_classify
-cCRMs_seg_classify
+The cCRMs_seg_classify project is used for a Machine Learning Pipeline for Automated Segmentation and Classification of Complicated Cystic Renal Masses in MRI.
 
 # Installing Dependencies
 ```bash
